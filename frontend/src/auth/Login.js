@@ -72,5 +72,6 @@ function Login() {
     </div>
   );
 }
+// register fix
 
 export default Login;
