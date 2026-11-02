@@ -12,7 +12,7 @@ function Login() {
     e.preventDefault();
     try {
       // Send data to our Node backend
-      const response = await axios.post('http://localhost:8000/api/users/login', {
+      const response = await axios.post('https://staffsync-backend-1l4u.onrender.com/api/users/login', {
         email,
         password
       });

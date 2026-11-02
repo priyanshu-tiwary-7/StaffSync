@@ -21,28 +21,28 @@ function HrDashboard() {
   // --- FETCH DATA ---
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/employees');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/employees');
       setEmployees(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/announcements');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/announcements');
       setAnnouncements(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/leaves');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/leaves');
       setLeaves(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchAttendance = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/attendance');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/attendance');
       setAttendance(response.data);
     } catch (error) { console.error(error); }
   };
@@ -62,7 +62,7 @@ function HrDashboard() {
   const handleAddEmployee = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/employees', employeeData);
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/employees', employeeData);
       setEmpMessage('Employee added successfully!');
       setEmployeeData({ name: '', email: '', department: '', position: '', salary: '', joinDate: '', phone: '', address: '' });
       fetchEmployees();
@@ -74,7 +74,7 @@ function HrDashboard() {
     e.preventDefault();
     try {
       const user = JSON.parse(localStorage.getItem('user'));
-      await axios.post('http://localhost:8000/api/announcements', { ...announcementData, createdBy: user._id });
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/announcements', { ...announcementData, createdBy: user._id });
       setAnnounceMessage('Announcement posted successfully!');
       setAnnouncementData({ title: '', message: '', targetAudience: 'ALL' });
       fetchAnnouncements();
@@ -85,7 +85,7 @@ function HrDashboard() {
   const handleLeaveAction = async (id, newStatus) => {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
-      await axios.put(`http://localhost:8000/api/leaves/${id}`, { status: newStatus, approverRole: user.role });
+      await axios.put(`https://staffsync-backend-1l4u.onrender.com/api/leaves/${id}`, { status: newStatus, approverRole: user.role });
       fetchLeaves();
     } catch (error) { console.error(error); }
   };

@@ -19,14 +19,14 @@ function ManagerDashboard() {
   // --- FETCH DATA ---
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/leaves');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/leaves');
       setLeaves(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchTrainings = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/trainings');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/trainings');
       setTrainings(response.data);
     } catch (error) { console.error(error); }
   };
@@ -39,7 +39,7 @@ function ManagerDashboard() {
   // --- HANDLERS ---
   const handleLeaveAction = async (id, newStatus) => {
     try {
-      await axios.put(`http://localhost:8000/api/leaves/${id}`, { 
+      await axios.put(`https://staffsync-backend-1l4u.onrender.com/api/leaves/${id}`, { 
         status: newStatus, 
         approverRole: user.role 
       });
@@ -50,7 +50,7 @@ function ManagerDashboard() {
   const handleCreateTraining = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/trainings', {
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/trainings', {
         ...trainingData,
         createdBy: user._id
       });

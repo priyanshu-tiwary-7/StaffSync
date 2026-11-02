@@ -23,21 +23,21 @@ function EmployeeDashboard() {
   // --- FETCH DATA ---
   const fetchMyLeaves = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/leaves?userId=${user._id}`);
+      const response = await axios.get(`https://staffsync-backend-1l4u.onrender.com/api/leaves?userId=${user._id}`);
       setMyLeaves(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchMyAttendance = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/attendance?userId=${user._id}`);
+      const response = await axios.get(`https://staffsync-backend-1l4u.onrender.com/api/attendance?userId=${user._id}`);
       setMyAttendance(response.data);
     } catch (error) { console.error(error); }
   };
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/announcements');
+      const response = await axios.get('https://staffsync-backend-1l4u.onrender.com/api/announcements');
       setAnnouncements(response.data);
     } catch (error) { console.error(error); }
   };
@@ -47,12 +47,11 @@ function EmployeeDashboard() {
     fetchMyAttendance();
     fetchAnnouncements();
   }, []);
-
   // --- HANDLERS ---
   const handleApplyLeave = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/leaves', {
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/leaves', {
         ...leaveData,
         user: user._id
       });
@@ -67,7 +66,7 @@ function EmployeeDashboard() {
 
   const handleCheckInOut = async () => {
     try {
-      await axios.post('http://localhost:8000/api/attendance', { user: user._id });
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/attendance', { user: user._id });
       fetchMyAttendance();
     } catch (error) { console.error(error); }
   };
@@ -213,3 +212,4 @@ const thStyle = { padding: '12px' };
 const tdStyle = { padding: '12px', color: 'white' };
 
 export default EmployeeDashboard;
+

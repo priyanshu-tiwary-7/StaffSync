@@ -10,7 +10,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8000/api/users/register', formData);
+      await axios.post('https://staffsync-backend-1l4u.onrender.com/api/users/register', formData);
       alert('Registration successful! Please login.');
       navigate('/login');
     } catch (err) {
