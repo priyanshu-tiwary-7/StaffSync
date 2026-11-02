@@ -41,8 +41,8 @@ function EmployeeDashboard() {
       setAnnouncements(response.data);
     } catch (error) { console.error(error); }
   };
-
-  useEffect(() => {
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ useEffect(() => {
     fetchMyLeaves();
     fetchMyAttendance();
     fetchAnnouncements();

@@ -30,8 +30,8 @@ function ManagerDashboard() {
       setTrainings(response.data);
     } catch (error) { console.error(error); }
   };
-
-  useEffect(() => {
+ // eslint-disable-next-line react-hooks/exhaustive-deps
+ useEffect(() => {
     fetchLeaves();
     fetchTrainings();
   }, []);
