@@ -11,19 +11,16 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      // Send data to our Node backend
       const response = await axios.post('https://staffsync-backend-1l4u.onrender.com/api/users/login', {
         email,
         password
       });
 
-      // Save the token and user data in the browser's local storage
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
 
       alert('Login Successful! Redirecting...');
       
-      // Redirect based on role
       const role = response.data.user.role;
       if (role === 'HR') navigate('/hr');
       else if (role === 'Manager') navigate('/manager');
@@ -67,6 +64,10 @@ function Login() {
             Login
           </button>
         </form>
+
+        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px' }}>
+          Don't have an account? <span onClick={() => navigate('/register')} style={{ color: '#0056b3', cursor: 'pointer', fontWeight: 'bold' }}>Register</span>
+        </p>
       </div>
     </div>
   );
