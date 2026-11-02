@@ -33,6 +33,7 @@ app.use('/api/attendance', attendanceRoutes);
 app.use('/api/trainings', trainingRoutes);
 
 
+
 app.get('/', (req, res) => {
     res.send('HRM Backend Running...');
 });
